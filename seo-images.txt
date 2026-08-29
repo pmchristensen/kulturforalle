@@ -1,0 +1,1 @@
+Offer imagery should use descriptive surrounding text and, when rendered as img elements in the final CMS version, descriptive alt text and stable optimized URLs.
