@@ -1,0 +1,1 @@
+Public content is crawlable. robots.txt points crawlers to the XML sitemap.
