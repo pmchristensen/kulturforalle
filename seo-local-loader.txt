@@ -1,0 +1,1 @@
+Local metadata override is applied after the global SEO layer on city landing pages.
