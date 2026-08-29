@@ -1,0 +1,1 @@
+Submit https://kulturforalle.no/sitemap.xml after production DNS/domain launch and verify structured data on live URLs.
