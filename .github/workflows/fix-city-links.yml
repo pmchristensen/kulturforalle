@@ -1,0 +1,38 @@
+name: Fix city card navigation
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-city-links.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make city cards useful
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          replacements={
+            '<a class="place-card oslo" href="#meld">':'<a class="place-card oslo" href="/pamelding.html?sted=Oslo">',
+            '<a class="place-card bergen" href="#meld">':'<a class="place-card bergen" href="/pamelding.html?sted=Bergen">',
+            '<a class="place-card baerum" href="#meld">':'<a class="place-card baerum" href="/pamelding.html?sted=Bærum">',
+            '<a class="place-card asker" href="#meld">':'<a class="place-card asker" href="/pamelding.html?sted=Asker">',
+            '<a class="place-card hamar" href="#meld">':'<a class="place-card hamar" href="/pamelding.html?sted=Hamar">',
+            'href="#meld">Les om stipendordningen →':'href="/stipend.html">Les om stipendordningen →',
+            'href="https://kulturforalle.no/blimed/">Meld interesse →':'href="/pamelding.html">Meld interesse →'
+          }
+          for old,new in replacements.items():
+              s=s.replace(old,new)
+          p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "Kulturforalle Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Make city cards and CTAs functional" || exit 0
+          git push
