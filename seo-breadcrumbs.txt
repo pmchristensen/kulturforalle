@@ -1,0 +1,1 @@
+BreadcrumbList structured data is used on non-home pages to clarify hierarchy for crawlers.
