@@ -1,0 +1,1 @@
+Local landing pages use city-level areaServed descriptions and link users to the relevant signup flow.
