@@ -1,0 +1,57 @@
+(function(){
+  const BASE='https://kulturforalle.no';
+  const path=(location.pathname==='/'?'/':location.pathname.replace(/\/$/,''));
+  const pages={
+    '/':{title:'KFUK-KFUM Kulturskole | Musikk, kunst og skaperglede',description:'Musikk, kunst og kreative tilbud for barn og unge 8–19 år i Oslo, Bærum, Asker, Bergen og Hamar. To prøvetimer for nye musikkelever og stipendordning.',type:'website'},
+    '/piano.html':{title:'Pianoundervisning for barn og unge | KFUK-KFUM Kulturskole',description:'Pianoundervisning for barn og unge 8–19 år. Piano, synth og tangentinstrumenter, individuelt eller i gruppe. To prøvetimer for nye musikkelever.',offer:'Piano'},
+    '/gitar.html':{title:'Gitarundervisning for barn og unge | KFUK-KFUM Kulturskole',description:'Lær akustisk eller elektrisk gitar med undervisning tilpasset nivå, interesser og mål. For barn og unge 8–19 år.',offer:'Gitar'},
+    '/trommer.html':{title:'Trommeundervisning for barn og unge | KFUK-KFUM Kulturskole',description:'Trommeundervisning for barn og unge 8–19 år. Lær rytme, koordinasjon, teknikk og samspill med engasjerte lærere.',offer:'Trommer'},
+    '/vokal.html':{title:'Sang- og vokalundervisning | KFUK-KFUM Kulturskole',description:'Vokalundervisning for barn og unge. Utvikle stemmen, trygghet, formidling og eget uttrykk med undervisning tilpasset eleven.',offer:'Vokal'},
+    '/bass.html':{title:'Bassundervisning for barn og unge | KFUK-KFUM Kulturskole',description:'Lær el-bass, groove, teknikk og samspill. Bassundervisning tilpasset nivå og interesser for barn og unge.',offer:'Bass'},
+    '/musikkproduksjon.html':{title:'Musikkproduksjon for barn og unge | KFUK-KFUM Kulturskole',description:'Lær musikkproduksjon, beats, opptak og lyd. Utvikle egne ideer fra skisse til produksjon i et kreativt læringsmiljø.',offer:'Musikkproduksjon'},
+    '/visuell-kunst.html':{title:'Visuell kunst for barn og unge | KFUK-KFUM Kulturskole',description:'Kurs i visuell kunst for barn og unge med tegning, maling, design og kreative teknikker. Utvikle eget uttrykk i trygge rammer.',offer:'Visuell kunst'},
+    '/andre-tilbud.html':{title:'Flere kreative tilbud | KFUK-KFUM Kulturskole',description:'Låtskriving, samspill, studio, andre instrumenter og Musikk for alle. Se flere kreative tilbud fra KFUK-KFUM Kulturskole.'},
+    '/priser.html':{title:'Priser og vilkår | KFUK-KFUM Kulturskole',description:'Se priser, undervisningslengder og vilkår for KFUK-KFUM Kulturskole. Nye musikkelever får to prøvetimer før de bestemmer seg.'},
+    '/stipend.html':{title:'Stipendordning | KFUK-KFUM Kulturskole',description:'Økonomi skal ikke stoppe deltakelse. Les om stipendordningen og muligheten for støtte til semesteravgiften.'},
+    '/laereplan.html':{title:'Læreplan | KFUK-KFUM Kulturskole',description:'Les om mål, progresjon, mestring og læring i KFUK-KFUM Kulturskole sin undervisning i musikk og kreative fag.'},
+    '/pamelding.html':{title:'Meld interesse | KFUK-KFUM Kulturskole',description:'Meld interesse for undervisning i KFUK-KFUM Kulturskole. Velg aktivitet og sted, så hjelper vi med lærer, tidspunkt og videre prosess.',noindex:false}
+  };
+  const cfg=pages[path]||pages['/'];
+  const canonical=BASE+(path==='/'?'':path.replace(/\.html$/,''));
+  function meta(name,content,property){let el=document.head.querySelector((property?'meta[property="':'meta[name="')+name+'"]');if(!el){el=document.createElement('meta');el.setAttribute(property?'property':'name',name);document.head.appendChild(el)}el.setAttribute('content',content)}
+  document.title=cfg.title;
+  meta('description',cfg.description);
+  meta('robots',cfg.noindex===true?'noindex,follow':'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+  meta('og:title',cfg.title,true);meta('og:description',cfg.description,true);meta('og:type',cfg.type||'website',true);meta('og:url',canonical,true);meta('og:locale','nb_NO',true);meta('og:site_name','KFUK-KFUM Kulturskole',true);
+  meta('twitter:card','summary_large_image');meta('twitter:title',cfg.title);meta('twitter:description',cfg.description);
+  let link=document.head.querySelector('link[rel="canonical"]');if(!link){link=document.createElement('link');link.rel='canonical';document.head.appendChild(link)}link.href=canonical;
+  const org={"@type":"EducationalOrganization","@id":BASE+'/#organization',name:'KFUK-KFUM Kulturskole',url:BASE+'/',email:'kulturskole@kfuk-kfum.no',areaServed:[{"@type":"City",name:'Oslo'},{"@type":"City",name:'Bærum'},{"@type":"City",name:'Asker'},{"@type":"City",name:'Bergen'},{"@type":"City",name:'Hamar'}],sameAs:[]};
+  const site={"@type":"WebSite","@id":BASE+'/#website',url:BASE+'/',name:'KFUK-KFUM Kulturskole',publisher:{"@id":BASE+'/#organization'},inLanguage:'nb-NO'};
+  const webPage={"@type":"WebPage","@id":canonical+'#webpage',url:canonical,name:cfg.title,description:cfg.description,isPartOf:{"@id":BASE+'/#website'},about:{"@id":BASE+'/#organization'},inLanguage:'nb-NO'};
+  const graph=[org,site,webPage];
+  if(path!=='/') graph.push({"@type":"BreadcrumbList","@id":canonical+'#breadcrumb',itemListElement:[{"@type":"ListItem",position:1,name:'Forsiden',item:BASE+'/'},{"@type":"ListItem",position:2,name:(cfg.offer||document.querySelector('h1')?.textContent||cfg.title).trim(),item:canonical}]});
+  if(cfg.offer) graph.push({"@type":"Service","@id":canonical+'#service',name:cfg.offer+'undervisning',description:cfg.description,provider:{"@id":BASE+'/#organization'},audience:{"@type":"PeopleAudience",suggestedMinAge:8,suggestedMaxAge:19},areaServed:org.areaServed,url:canonical});
+  const faqByPath={
+    '/piano.html':[['Hvem passer pianoundervisning for?','Undervisningen passer både nybegynnere og elever med erfaring, og tilpasses elevens nivå, interesser og mål.'],['Kan nye elever prøve før de bestemmer seg?','Ja. Nye musikkelever får to prøvetimer før de bestemmer seg for å fortsette.'],['Hvor lenge varer en pianotime?','Kulturskolen tilbyr normalt individuelle timer på 30 eller 45 minutter.']],
+    '/gitar.html':[['Passer gitarundervisning for nybegynnere?','Ja. Undervisningen tilpasses både nybegynnere og elever som allerede har spilt en stund.'],['Kan eleven lære både akustisk og elektrisk gitar?','Tilbudet omfatter både akustisk og elektrisk gitar, avhengig av elevens ønsker og tilgjengelig lærer.'],['Kan nye musikkelever prøve først?','Ja. Nye musikkelever får to prøvetimer før de bestemmer seg.']],
+    '/trommer.html':[['Må eleven ha spilt trommer før?','Nei. Undervisningen passer også for nybegynnere og bygges opp fra elevens nivå.'],['Hva lærer man på trommetimer?','Eleven arbeider blant annet med rytme, koordinasjon, teknikk, låter og samspill.'],['Kan nye elever prøve først?','Ja. Nye musikkelever får to prøvetimer før de bestemmer seg.']],
+    '/vokal.html':[['Passer vokalundervisning for nybegynnere?','Ja. Undervisningen tilpasses elevens nivå og tar utgangspunkt i stemmen, musikken og målene til den enkelte.'],['Hva jobber man med i vokaltimene?','Timene kan blant annet handle om stemmebruk, formidling, trygghet, repertoar og eget uttrykk.'],['Kan nye elever prøve først?','Ja. Nye musikkelever får to prøvetimer før de bestemmer seg.']],
+    '/bass.html':[['Hva lærer man i bassundervisningen?','Eleven jobber blant annet med groove, rytme, teknikk, låter og samspill.'],['Passer bass for nybegynnere?','Ja. Undervisningen tilpasses elevens nivå og erfaring.'],['Kan nye elever prøve først?','Ja. Nye musikkelever får to prøvetimer før de bestemmer seg.']],
+    '/musikkproduksjon.html':[['Hva lærer man i musikkproduksjon?','Eleven kan arbeide med beats, opptak, lyd, arrangement og utvikling av egne musikalske ideer.'],['Må eleven kunne spille et instrument?','Ikke nødvendigvis. Tilbudet tar utgangspunkt i elevens interesser og nivå.'],['Hvordan melder man interesse?','Velg musikkproduksjon i skjemaet og ønsket sted. Kulturskolen følger opp kapasitet og videre muligheter.']],
+    '/visuell-kunst.html':[['Hva gjør man på visuell kunst?','Elevene kan arbeide med blant annet tegning, maling, design og ulike materialer og teknikker.'],['Passer tilbudet for nybegynnere?','Ja. Aktivitetene tilpasses alder, nivå og interesser.'],['Hvordan melder man interesse?','Velg Visuell kunst i påmeldingsskjemaet og ønsket sted.']],
+    '/priser.html':[['Får nye elever prøvetimer?','Nye musikkelever får to prøvetimer og kan avslutte etter prøvetimene dersom de ikke ønsker å fortsette.'],['Hva koster undervisningen?','Pris avhenger av undervisningslengde og om undervisningen er individuell eller i gruppe. Se prisoversikten på denne siden.'],['Finnes det stipend?','Ja. Familier som trenger hjelp med semesteravgiften kan søke stipend.']],
+    '/stipend.html':[['Hvem kan søke stipend?','Stipendordningen er for familier som trenger økonomisk støtte for at barnet eller ungdommen skal kunne delta.'],['Hvor mye støtte kan man få?','Støtten vurderes etter behov. Se vilkårene på denne siden for gjeldende nivåer og kriterier.'],['Må man være elev først?','Du kan lese om ordningen før påmelding og kontakte kulturskolen dersom du er usikker på hvordan du skal gå frem.']],
+    '/pamelding.html':[['Er dette en bindende påmelding?','Skjemaet brukes til å melde interesse. Kulturskolen følger opp med informasjon om plass, lærer, sted og tidspunkt.'],['Må jeg betale når jeg sender inn skjemaet?','Nei. Det gjøres ingen betaling når du melder interesse.'],['Hva skjer etter at jeg har meldt interesse?','Kulturskolen ser på aktivitet, sted, lærer og kapasitet og tar kontakt om neste steg.']]
+  };
+  const faqs=faqByPath[path];
+  if(faqs){
+    graph.push({"@type":"FAQPage","@id":canonical+'#faq',mainEntity:faqs.map(([q,a])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}}))});
+    const footer=document.querySelector('footer,.footer');
+    if(footer&&!document.querySelector('.seo-faq')){
+      const sec=document.createElement('section');sec.className='seo-faq';sec.innerHTML='<div class="seo-faq-inner"><div class="seo-faq-kicker">SPØRSMÅL OG SVAR</div><h2>Ofte lurt på</h2><div class="seo-faq-list">'+faqs.map(([q,a],i)=>'<details'+(i===0?' open':'')+'><summary>'+q+'<span>+</span></summary><p>'+a+'</p></details>').join('')+'</div></div>';
+      footer.parentNode.insertBefore(sec,footer);
+      const style=document.createElement('style');style.textContent='.seo-faq{background:#fff;padding:70px 20px}.seo-faq-inner{max-width:900px;margin:auto}.seo-faq-kicker{font-size:12px;font-weight:900;letter-spacing:.14em;color:#6c2bb8;margin-bottom:10px}.seo-faq h2{font-size:clamp(34px,5vw,48px);margin:0 0 24px;letter-spacing:-.04em}.seo-faq-list{border-top:1px solid rgba(25,20,31,.12)}.seo-faq details{border-bottom:1px solid rgba(25,20,31,.12);padding:0}.seo-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font-weight:800;font-size:18px}.seo-faq summary::-webkit-details-marker{display:none}.seo-faq summary span{color:#6c2bb8;font-size:24px}.seo-faq p{margin:0 0 20px;color:#655e6e;max-width:760px}.seo-faq details[open] summary span{transform:rotate(45deg)}@media(max-width:600px){.seo-faq{padding:46px 22px}.seo-faq summary{font-size:16px;padding:17px 0}.seo-faq p{font-size:14px;line-height:1.5}}';document.head.appendChild(style);
+    }
+  }
+  const schema=document.createElement('script');schema.type='application/ld+json';schema.textContent=JSON.stringify({"@context":"https://schema.org","@graph":graph});document.head.appendChild(schema);
+})();
