@@ -1,0 +1,1 @@
+Canonical public URLs use extensionless paths, e.g. https://kulturforalle.no/piano and https://kulturforalle.no/oslo.
