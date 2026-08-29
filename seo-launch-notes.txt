@@ -1,0 +1,1 @@
+After production domain is connected: verify sitemap.xml, robots.txt, canonical URLs, structured data, and submit sitemap in Google Search Console and Bing Webmaster Tools.
