@@ -1,6 +1,7 @@
 (function(){
   const BASE='https://kulturforalle.no';
-  const path=(location.pathname==='/'?'/':location.pathname.replace(/\/$/,''));
+  const rawPath=(location.pathname==='/'?'/':location.pathname.replace(/\/$/,''));
+  const path=(rawPath==='/'||rawPath.endsWith('.html'))?rawPath:rawPath+'.html';
   const pages={
     '/':{title:'KFUK-KFUM Kulturskole | Musikk, kunst og skaperglede',description:'Musikk, kunst og kreative tilbud for barn og unge 8–19 år i Oslo, Bærum, Asker, Bergen og Hamar. To prøvetimer for nye musikkelever og stipendordning.',type:'website'},
     '/piano.html':{title:'Pianoundervisning for barn og unge | KFUK-KFUM Kulturskole',description:'Pianoundervisning for barn og unge 8–19 år. Piano, synth og tangentinstrumenter, individuelt eller i gruppe. To prøvetimer for nye musikkelever.',offer:'Piano'},
