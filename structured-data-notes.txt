@@ -1,0 +1,1 @@
+Structured data types: EducationalOrganization, WebSite, WebPage, BreadcrumbList, Service and FAQPage on relevant pages. Local pages additionally describe areaServed.
