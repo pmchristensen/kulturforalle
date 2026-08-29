@@ -1,1 +1,248 @@
-<!doctype html><html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meld deg på | KFUK-KFUM Kulturskole</title><link rel="stylesheet" href="/styles.css"><style>@media(max-width:760px){.signup-trust{display:grid!important;grid-template-columns:repeat(3,auto)!important;justify-content:center!important;align-items:center!important;gap:8px 13px!important;margin-top:15px!important;font-size:11px!important;white-space:nowrap!important;text-align:center!important}.signup-trust span{display:block!important}.signup-hero{padding-bottom:16px!important}}@media(max-width:360px){.signup-trust{gap:7px!important;font-size:10px!important}}.conditional-field{display:none;margin-top:-2px;padding:17px;border-radius:18px;background:#f5eeff;border:1px solid #ddcaef}.conditional-field.show{display:block;animation:reveal .18s ease}.conditional-field label{font-size:14px!important}.conditional-field .hint{font-size:12px;color:var(--mut);margin:6px 0 0}.conditional-field input{background:#fff!important}.field-error{display:none;color:#a53030;font-size:12px;font-weight:700;margin-top:6px}.field-error.show{display:block}@keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}</style><script src="/seo.js" defer></script></head><body class="signup-page"><div class="top">Det tar bare noen få minutter å melde interesse</div><nav class="nav"><div class="container navin"><a class="brand" href="/"><small>KFUK-KFUM</small><b>KULTURSKOLE</b></a><div class="menu"><a href="/#tilbud">Tilbud</a><a href="/#steder">Steder</a><a href="/stipend.html">Stipend</a><a href="/#om">Om oss</a><a class="cta" href="/pamelding.html">Meld interesse</a></div></div></nav><header class="hero signup-hero"><div class="container signup-intro"><div class="crumb">MELD INTERESSE</div><h1>Tre enkle steg.</h1><p class="lead">Velg tilbud og sted først. Deretter trenger vi bare litt informasjon om eleven og hvordan vi kan kontakte dere.</p><div class="signup-trust"><span>✓ Ca. 2 min</span><span>✓ Ingen betaling</span><span>✓ 2 prøvetimer</span></div></div></header><section class="section signup-section"><div class="container"><div class="formbox"><div class="step-labels"><span class="active">1 · Tilbud</span><span>2 · Elev</span><span>3 · Kontakt</span></div><div class="stepper"><div class="step on" id="bar1"></div><div class="step" id="bar2"></div><div class="step" id="bar3"></div></div><div id="p1" class="formpage active"><div class="crumb">STEG 1 AV 3</div><h2>Hva ønsker eleven?</h2><p class="form-help">Velg det som passer best. Skjemaet tilpasser seg valgene deres.</p><div class="field"><label>Aktivitet</label><select id="activity" onchange="activityChanged()"><option value="">Velg aktivitet</option><option>Piano</option><option>Gitar</option><option>Trommer</option><option>Vokal</option><option>Bass</option><option>Musikkproduksjon</option><option>Visuell kunst</option><option>Musikk for alle</option><option>Annet instrument</option></select></div><div class="field conditional-field" id="otherInstrumentWrap"><label for="otherInstrument">Hvilket instrument ønsker eleven å lære?</label><input id="otherInstrument" name="annet_instrument" placeholder="F.eks. fiolin, cello, saksofon eller ukulele"><p class="hint">Skriv instrumentet her. Vi undersøker lærer, sted og kapasitet for dere.</p><div class="field-error" id="otherInstrumentError">Skriv hvilket instrument eleven ønsker før du går videre.</div></div><div class="field"><label>Sted</label><select id="place"><option value="">Velg område</option><optgroup label="Oslo"><option>Oslo – Bøler</option><option>Oslo – Holmlia</option><option>Oslo – Hauketo-Prinsdal</option><option>Oslo – Ljan</option></optgroup><optgroup label="Bærum"><option>Bærum – Høvik</option><option>Bærum – Helgerud</option></optgroup><option>Asker</option><option>Bergen – Olsvik</option><option>Hamar</option></select></div><div class="field"><label>Undervisningsform</label><input type="hidden" id="lessonType" name="undervisningsform" value="individuell"><div class="choices lesson-choices"><button type="button" class="select-card selected" data-value="individuell" onclick="selectType(this)"><span><strong>Individuell</strong><small>Én elev med lærer</small></span><span class="selected-mark" aria-hidden="true">✓</span></button><button type="button" class="select-card" data-value="gruppe_usikker" onclick="selectType(this)"><span><strong>Gruppe / usikker</strong><small>Vi hjelper dere å finne riktig løsning</small></span><span class="selected-mark" aria-hidden="true">✓</span></button></div></div><div class="actions signup-actions"><span></span><button class="btn" onclick="go(2)">Neste <span aria-hidden="true">→</span></button></div></div><div id="p2" class="formpage"><div class="crumb">STEG 2 AV 3</div><h2>Hvem gjelder det?</h2><div class="formrow"><div class="field"><label>Elevens fornavn</label><input placeholder="Fornavn"></div><div class="field"><label>Elevens etternavn</label><input placeholder="Etternavn"></div></div><div class="formrow"><div class="field"><label>Fødselsår</label><select><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option></select></div><div class="field"><label>Erfaring</label><select><option>Nybegynner</option><option>Har litt erfaring</option><option>Har spilt/gått på kurs lenge</option></select></div></div><div class="field"><label>Noe læreren bør vite? <span class="muted">(valgfritt)</span></label><textarea rows="3" id="teacherNote" placeholder="F.eks. musikk eleven liker, tidligere undervisning eller behov for tilrettelegging"></textarea></div><div class="actions signup-actions"><button class="btn light" onclick="go(1)">← Tilbake</button><button class="btn" onclick="go(3)">Neste →</button></div></div><div id="p3" class="formpage"><div class="crumb">STEG 3 AV 3</div><h2>Hvordan når vi dere?</h2><div class="formrow"><div class="field"><label>Foresatt / kontaktperson</label><input placeholder="Navn"></div><div class="field"><label>Telefon</label><input type="tel" placeholder="Mobilnummer"></div></div><div class="field"><label>E-post</label><input type="email" placeholder="navn@epost.no"></div><div class="field"><label>Kommentar om tidspunkt <span class="muted">(valgfritt)</span></label><input placeholder="F.eks. helst tirsdag eller torsdag etter kl. 16"></div><label class="choice consent"><input type="checkbox"><span>Jeg har lest <a href="/priser.html" style="color:var(--p);font-weight:800">priser og vilkår</a> og godtar at kulturskolen kontakter meg om elevplass.</span></label><div class="notice" style="margin-top:16px">Dette er en designprototype. Knappen sender foreløpig ikke personopplysninger.</div><div class="actions signup-actions"><button class="btn light" onclick="go(2)">← Tilbake</button><button class="btn" onclick="done()">Send interesse ✓</button></div></div><div id="done" class="formpage" style="text-align:center;padding:30px 0"><div style="font-size:55px">✓</div><h2>Takk!</h2><p class="lead" style="margin:auto">Interessen er registrert. I den ferdige løsningen får foresatt en bekreftelse med oppsummering og informasjon om hva som skjer videre.</p><a class="btn light" href="/" style="margin-top:20px">Til forsiden</a></div></div></div></section><section class="section white signup-explainer"><div class="container"><h2>Slik fungerer det videre</h2><div class="grid3"><div class="card"><div class="num">1</div><h3>Dere melder interesse</h3><p class="muted">Ingen lange skjemaer eller unødvendige felt.</p></div><div class="card"><div class="num">2</div><h3>Vi finner plass</h3><p class="muted">Kulturskolen matcher aktivitet, sted, lærer og tidspunkt.</p></div><div class="card"><div class="num">3</div><h3>Eleven kan prøve</h3><p class="muted">For musikktilbud kan nye elever prøve to timer før endelig beslutning.</p></div></div></div></section><footer class="footer"><div class="container footerin"><div><div class="brand"><small>KFUK-KFUM</small><b>KULTURSKOLE</b></div></div><div><h4>Før påmelding</h4><a href="/priser.html">Priser og vilkår</a><a href="/stipend.html">Stipend</a></div><div><h4>Hjelp</h4><a href="/">Forsiden</a></div></div><div class="container tiny">Designprototype · ingen data sendes fra dette skjemaet</div></footer><script>function selectType(el){document.querySelectorAll('.select-card').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');document.getElementById('lessonType').value=el.dataset.value}function activityChanged(){const isOther=document.getElementById('activity').value==='Annet instrument';const wrap=document.getElementById('otherInstrumentWrap');wrap.classList.toggle('show',isOther);if(!isOther){document.getElementById('otherInstrumentError').classList.remove('show')}else{setTimeout(()=>document.getElementById('otherInstrument').focus({preventScroll:true}),100)}}function validateStep1(){if(document.getElementById('activity').value==='Annet instrument'&&!document.getElementById('otherInstrument').value.trim()){document.getElementById('otherInstrumentError').classList.add('show');document.getElementById('otherInstrument').focus();document.getElementById('otherInstrumentWrap').scrollIntoView({behavior:'smooth',block:'center'});return false}return true}function go(n){if(n===2&&!validateStep1())return;document.querySelectorAll('.formpage').forEach(x=>x.classList.remove('active'));document.getElementById('p'+n).classList.add('active');for(let i=1;i<=3;i++){document.getElementById('bar'+i).classList.toggle('on',i<=n)}document.querySelectorAll('.step-labels span').forEach((x,i)=>x.classList.toggle('active',i===n-1));document.querySelector('.formbox').scrollIntoView({behavior:'smooth',block:'start'})}function done(){document.querySelectorAll('.formpage').forEach(x=>x.classList.remove('active'));document.getElementById('done').classList.add('active');document.querySelectorAll('.step').forEach(x=>x.classList.add('on'))}function applyParams(){const q=new URLSearchParams(location.search),a=q.get('aktivitet'),s=q.get('sted');if(a){const el=document.getElementById('activity');[...el.options].forEach(o=>{if(o.text.toLowerCase()===a.toLowerCase())el.value=o.value})}if(s){const el=document.getElementById('place'),sl=s.toLowerCase();const exact=[...el.options].find(o=>o.text.toLowerCase()===sl);const prefix=[...el.options].find(o=>o.text.toLowerCase().startsWith(sl+' –'));if(exact)el.value=exact.value;else if(prefix)el.value=prefix.value}activityChanged()}document.addEventListener('DOMContentLoaded',applyParams)</script><script src="/mobile-nav.js" defer></script></body></html>
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meld deg på | KFUK-KFUM Kulturskole</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .signup-hero{padding-bottom:24px!important}.signup-intro{max-width:760px}.signup-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:13px;font-weight:800;color:#5f5368}
+    .smart-note{background:#f6f0fb;border:1px solid #e3d5ef;border-radius:20px;padding:16px 18px;margin:14px 0 4px;display:none}.smart-note.show{display:block}.smart-note strong{display:block;color:#4c246c;margin-bottom:4px}.smart-note p{margin:0;color:#655d69;font-size:13px;line-height:1.45}
+    .conditional-field{display:none;margin-top:-2px;padding:17px;border-radius:18px;background:#f5eeff;border:1px solid #ddcaef}.conditional-field.show{display:block}.conditional-field label{font-size:14px!important}.conditional-field .hint{font-size:12px;color:var(--mut);margin:6px 0 0}.conditional-field input{background:#fff!important}
+    .smart-block{display:none}.smart-block.show{display:block}.smart-block-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin:20px 0 10px}.smart-block-head h3{font-size:18px;margin:0 0 3px}.smart-block-head p{font-size:12px;color:var(--mut);margin:0}.auto-pill{flex:none;background:#efe8f6;color:#58257d;border-radius:999px;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+    .option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option-card{appearance:none;border:1px solid #ded9e2;background:#fff;border-radius:16px;padding:14px 15px;text-align:left;cursor:pointer;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#29242e}.option-card:hover{border-color:#c3a7d9}.option-card.selected{border:2px solid #6c2bb8;background:#faf6ff;padding:13px 14px}.option-card strong{display:block;font-size:15px}.option-card small{display:block;color:#786f7c;font-size:11px;line-height:1.35;margin-top:3px}.checkmark{width:24px;height:24px;border-radius:50%;border:1px solid #d5ced9;display:grid;place-items:center;font-size:12px;flex:none}.option-card.selected .checkmark{background:#6c2bb8;color:#fff;border-color:#6c2bb8}
+    .day-grid{display:flex;flex-wrap:wrap;gap:8px}.day-chip{appearance:none;border:1px solid #ddd7e1;background:#fff;border-radius:999px;padding:10px 13px;font-weight:800;font-size:13px;color:#312b35;cursor:pointer}.day-chip.selected{background:#6c2bb8;color:#fff;border-color:#6c2bb8}
+    .selection-summary{display:none;background:#1f1726;color:#fff;border-radius:18px;padding:14px 16px;margin:0 0 20px}.selection-summary.show{display:block}.selection-summary .eyebrow{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#cdb9db;margin-bottom:5px}.selection-summary .summary-line{font-size:14px;font-weight:800;line-height:1.45}
+    .field-error{display:none;color:#a53030;font-size:12px;font-weight:700;margin-top:6px}.field-error.show{display:block}.muted-inline{font-weight:500;color:#857b89}.field-help{font-size:12px;color:var(--mut);margin:6px 0 0;line-height:1.4}
+    .experience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.experience-grid .option-card{min-height:84px}
+    .formbox select.invalid,.formbox input.invalid{border-color:#a53030!important;box-shadow:0 0 0 2px rgba(165,48,48,.08)}
+    @media(max-width:760px){.signup-trust{display:grid!important;grid-template-columns:repeat(3,auto)!important;justify-content:center!important;align-items:center!important;gap:8px 13px!important;margin-top:15px!important;font-size:11px!important;white-space:nowrap!important;text-align:center!important}.signup-trust span{display:block!important}.signup-hero{padding-bottom:16px!important}.option-grid,.experience-grid{grid-template-columns:1fr}.option-card{min-height:64px}.smart-block-head{margin-top:17px}.selection-summary{border-radius:16px}.form-help{font-size:14px}}
+    @media(max-width:360px){.signup-trust{gap:7px!important;font-size:10px!important}}
+  </style>
+  <script src="/seo.js" defer></script>
+</head>
+<body class="signup-page">
+  <div class="top">Det tar bare noen få minutter å melde interesse</div>
+  <nav class="nav"><div class="container navin"><a class="brand" href="/"><small>KFUK-KFUM</small><b>KULTURSKOLE</b></a><div class="menu"><a href="/#tilbud">Tilbud</a><a href="/#steder">Steder</a><a href="/stipend.html">Stipend</a><a href="/#om">Om oss</a><a class="cta" href="/pamelding.html">Meld interesse</a></div></div></nav>
+
+  <header class="hero signup-hero"><div class="container signup-intro"><div class="crumb">MELD INTERESSE</div><h1>Vi finner riktig plass.</h1><p class="lead">Velg hva eleven ønsker og hvor dere bor. Resten av skjemaet tilpasser seg automatisk, så dere slipper irrelevante spørsmål.</p><div class="signup-trust"><span>✓ Ca. 2 min</span><span>✓ Ingen betaling</span><span>✓ 2 prøvetimer</span></div></div></header>
+
+  <section class="section signup-section"><div class="container"><div class="formbox">
+    <div class="step-labels"><span class="active">1 · Tilbud</span><span>2 · Elev</span><span>3 · Kontakt</span></div>
+    <div class="stepper"><div class="step on" id="bar1"></div><div class="step" id="bar2"></div><div class="step" id="bar3"></div></div>
+
+    <div id="p1" class="formpage active">
+      <div class="crumb">STEG 1 AV 3</div>
+      <h2>Hva passer best?</h2>
+      <p class="form-help">Start med aktivitet og sted. Vi viser bare valg som er relevante videre.</p>
+
+      <div class="field"><label for="activity">Aktivitet</label><select id="activity" onchange="activityChanged()"><option value="">Velg aktivitet</option><option>Piano</option><option>Gitar</option><option>Trommer</option><option>Vokal</option><option>Bass</option><option>Musikkproduksjon</option><option>Visuell kunst</option><option>Musikk for alle</option><option>Band / samspill</option><option>Musikklab</option><option>Søm & redesign</option><option>Annet instrument / tilbud</option></select><div class="field-error" id="activityError">Velg en aktivitet.</div></div>
+
+      <div class="field conditional-field" id="otherInstrumentWrap"><label for="otherInstrument">Hva ønsker eleven å lære?</label><input id="otherInstrument" name="annet_instrument" placeholder="F.eks. fiolin, ukulele, saksofon eller låtskriving"><p class="hint">Skriv instrumentet eller tilbudet. Vi undersøker lærer og kapasitet.</p><div class="field-error" id="otherInstrumentError">Skriv hva eleven ønsker før du går videre.</div></div>
+
+      <div class="field"><label for="place">Sted</label><select id="place" onchange="placeChanged()"><option value="">Velg område</option></select><p class="field-help" id="placeHelp">Stedslisten tilpasser seg aktiviteten.</p><div class="field-error" id="placeError">Velg et sted.</div></div>
+
+      <div class="smart-note" id="matchNote"><strong id="matchTitle"></strong><p id="matchText"></p></div>
+
+      <div class="smart-block" id="daysWrap"><div class="smart-block-head"><div><h3>Hvilke dager passer?</h3><p>Velg gjerne flere, så blir det lettere å finne plass.</p></div></div><input type="hidden" id="days" name="dager"><div class="day-grid" id="dayGrid"></div><div class="field-error" id="daysError">Velg minst én dag, eller «Annet».</div></div>
+
+      <div class="smart-block" id="durationWrap"><div class="smart-block-head"><div><h3>Hvor lang time ønsker dere?</h3><p>Velg det som passer eleven best.</p></div></div><input type="hidden" id="duration" name="varighet"><div class="option-grid" id="durationGrid"></div></div>
+
+      <div class="smart-block" id="formatWrap"><div class="smart-block-head"><div><h3>Undervisningsform</h3><p>Dere kan også velge «usikker» hvis dere vil ha hjelp.</p></div></div><input type="hidden" id="lessonType" name="undervisningsform"><div class="option-grid" id="formatGrid"></div></div>
+
+      <div class="actions signup-actions"><span></span><button class="btn" type="button" onclick="go(2)">Neste <span aria-hidden="true">→</span></button></div>
+    </div>
+
+    <div id="p2" class="formpage">
+      <div class="selection-summary" id="summary2"><div class="eyebrow">DERES VALG</div><div class="summary-line"></div></div>
+      <div class="crumb">STEG 2 AV 3</div><h2>Hvem gjelder det?</h2>
+      <div class="formrow"><div class="field"><label for="firstName">Elevens fornavn</label><input id="firstName" placeholder="Fornavn"><div class="field-error" id="firstNameError">Skriv elevens fornavn.</div></div><div class="field"><label for="lastName">Elevens etternavn</label><input id="lastName" placeholder="Etternavn"><div class="field-error" id="lastNameError">Skriv elevens etternavn.</div></div></div>
+      <div class="field"><label for="birthYear">Fødselsår</label><select id="birthYear"></select><p class="field-help">Tilbudene er hovedsakelig for barn og unge 8–19 år. Er dere usikre, kan dere fortsatt sende inn.</p></div>
+
+      <div class="field"><label>Erfaring <span class="muted-inline">(valgfritt)</span></label><input type="hidden" id="experience" value=""><div class="experience-grid"><button class="option-card" type="button" data-exp="Nybegynner" onclick="selectExperience(this)"><span><strong>Nybegynner</strong><small>Har ikke hatt undervisning før</small></span><span class="checkmark">✓</span></button><button class="option-card" type="button" data-exp="Litt erfaring" onclick="selectExperience(this)"><span><strong>Litt erfaring</strong><small>Har prøvd eller gått litt tidligere</small></span><span class="checkmark">✓</span></button><button class="option-card" type="button" data-exp="God erfaring" onclick="selectExperience(this)"><span><strong>God erfaring</strong><small>Har spilt eller gått på kurs en stund</small></span><span class="checkmark">✓</span></button></div></div>
+
+      <div class="field"><label for="teacherNote">Noe læreren bør vite? <span class="muted-inline">(valgfritt)</span></label><textarea rows="3" id="teacherNote" placeholder="F.eks. musikk eleven liker, tidligere undervisning eller behov for tilrettelegging"></textarea></div>
+      <div class="actions signup-actions"><button class="btn light" type="button" onclick="go(1)">← Tilbake</button><button class="btn" type="button" onclick="go(3)">Neste →</button></div>
+    </div>
+
+    <div id="p3" class="formpage">
+      <div class="selection-summary" id="summary3"><div class="eyebrow">DERES VALG</div><div class="summary-line"></div></div>
+      <div class="crumb">STEG 3 AV 3</div><h2>Hvordan når vi dere?</h2>
+      <div class="formrow"><div class="field"><label for="contactName">Foresatt / kontaktperson</label><input id="contactName" placeholder="Navn"></div><div class="field"><label for="phone">Telefon</label><input id="phone" type="tel" placeholder="Mobilnummer"></div></div>
+      <div class="field"><label for="email">E-post</label><input id="email" type="email" placeholder="navn@epost.no"></div>
+      <div class="field"><label for="timeNote">Noe vi bør vite om tidspunkt? <span class="muted-inline">(valgfritt)</span></label><input id="timeNote" placeholder="F.eks. helst etter kl. 16 eller ikke før 15.30"></div>
+      <label class="choice consent"><input type="checkbox"><span>Jeg har lest <a href="/priser.html" style="color:var(--p);font-weight:800">priser og vilkår</a> og godtar at kulturskolen kontakter meg om elevplass.</span></label>
+      <div class="notice" style="margin-top:16px">Dette er en designprototype. Knappen sender foreløpig ikke personopplysninger.</div>
+      <div class="actions signup-actions"><button class="btn light" type="button" onclick="go(2)">← Tilbake</button><button class="btn" type="button" onclick="done()">Send interesse ✓</button></div>
+    </div>
+
+    <div id="done" class="formpage" style="text-align:center;padding:30px 0"><div style="font-size:55px">✓</div><h2>Takk!</h2><p class="lead" style="margin:auto">Interessen er registrert. I den ferdige løsningen får foresatt en bekreftelse med oppsummering og informasjon om hva som skjer videre.</p><a class="btn light" href="/" style="margin-top:20px">Til forsiden</a></div>
+  </div></div></section>
+
+  <section class="section white signup-explainer"><div class="container"><h2>Slik fungerer det videre</h2><div class="grid3"><div class="card"><div class="num">1</div><h3>Dere melder interesse</h3><p class="muted">Skjemaet viser bare spørsmål som er relevante for valgene deres.</p></div><div class="card"><div class="num">2</div><h3>Vi finner plass</h3><p class="muted">Kulturskolen matcher aktivitet, sted, lærer og tidspunkt.</p></div><div class="card"><div class="num">3</div><h3>Eleven kan prøve</h3><p class="muted">For musikktilbud kan nye elever prøve to timer før endelig beslutning.</p></div></div></div></section>
+
+  <footer class="footer"><div class="container footerin"><div><div class="brand"><small>KFUK-KFUM</small><b>KULTURSKOLE</b></div></div><div><h4>Før påmelding</h4><a href="/priser.html">Priser og vilkår</a><a href="/stipend.html">Stipend</a></div><div><h4>Hjelp</h4><a href="/">Forsiden</a></div></div><div class="container tiny">Designprototype · ingen data sendes fra dette skjemaet</div></footer>
+
+<script>
+const ALL_PLACES=[
+  {v:'Oslo – Bøler',label:'Oslo – Bøler'},
+  {v:'Oslo – Holmlia',label:'Oslo – Holmlia'},
+  {v:'Oslo – Hauketo-Prinsdal',label:'Oslo – Hauketo-Prinsdal'},
+  {v:'Oslo – Ljan',label:'Oslo – Ljan'},
+  {v:'Bærum – Høvik',label:'Bærum – Høvik'},
+  {v:'Bærum – Helgerud',label:'Bærum – Helgerud'},
+  {v:'Asker',label:'Asker – Askertun ved Asker kirke'},
+  {v:'Bergen – Olsvik',label:'Bergen – Olsvik'},
+  {v:'Hamar',label:'Hamar'},
+  {v:'Annet',label:'Annet / usikker'}
+];
+const ACTIVITY_RULES={
+  'Visuell kunst':{places:['Oslo – Bøler'],fixedDays:['Tirsdag'],fixedDuration:'105 min',fixedFormat:'Gruppe',note:'Visuell kunst på Bøler går på tirsdager. Vi fyller inn dette automatisk.'},
+  'Musikklab':{places:['Oslo – Bøler','Bergen – Olsvik'],fixedDuration:'75 min',fixedFormat:'Gruppe'},
+  'Søm & redesign':{places:['Bergen – Olsvik'],fixedDays:['Torsdag'],fixedFormat:'Gruppe',note:'Søm & redesign er knyttet til Olsvik. Vi fyller inn kjent kursdag automatisk.'},
+  'Band / samspill':{fixedDuration:'60 min',fixedFormat:'Gruppe'},
+  'Musikk for alle':{fixedDuration:'60 min',fixedFormat:'Gruppe'},
+  'Piano':{music:true},'Gitar':{music:true},'Trommer':{music:true},'Vokal':{music:true},'Bass':{music:true},'Musikkproduksjon':{music:true},'Annet instrument / tilbud':{music:true}
+};
+const PLACE_DAYS={
+  'Asker':['Mandag'],
+  'Bærum – Helgerud':['Mandag','Onsdag'],
+  'Bærum – Høvik':['Mandag'],
+  'Oslo – Ljan':['Torsdag'],
+  'Oslo – Hauketo-Prinsdal':['Mandag']
+};
+const SPECIAL_DAYS={
+  'Musikklab|Oslo – Bøler':['Onsdag'],
+  'Musikklab|Bergen – Olsvik':['Tirsdag'],
+  'Visuell kunst|Oslo – Bøler':['Tirsdag'],
+  'Søm & redesign|Bergen – Olsvik':['Torsdag']
+};
+let selectedDays=[];
+
+function byId(id){return document.getElementById(id)}
+function clearError(id){const e=byId(id);if(e)e.classList.remove('show')}
+function setInvalid(id,on){const e=byId(id);if(e)e.classList.toggle('invalid',!!on)}
+function activityRule(){return ACTIVITY_RULES[byId('activity').value]||{music:true}}
+
+function activityChanged(){
+  clearError('activityError');setInvalid('activity',false);
+  const activity=byId('activity').value;
+  const other=activity==='Annet instrument / tilbud';
+  byId('otherInstrumentWrap').classList.toggle('show',other);
+  if(!other)clearError('otherInstrumentError');
+  populatePlaces();
+  if(activity)updateSmartFields(); else resetSmartFields();
+}
+
+function populatePlaces(){
+  const activity=byId('activity').value,select=byId('place'),previous=select.value,rule=ACTIVITY_RULES[activity]||{};
+  let places=ALL_PLACES;
+  if(rule.places){places=ALL_PLACES.filter(p=>rule.places.includes(p.v)||p.v==='Annet')}
+  select.innerHTML='<option value="">Velg område</option>'+places.map(p=>'<option value="'+p.v+'">'+p.label+'</option>').join('');
+  if(places.some(p=>p.v===previous))select.value=previous;
+  const n=places.filter(p=>p.v!=='Annet').length;
+  byId('placeHelp').textContent=rule.places&&n===1?'Dette tilbudet er knyttet til ett kjent undervisningssted.':'Stedslisten er tilpasset aktiviteten.';
+}
+
+function placeChanged(){clearError('placeError');setInvalid('place',false);updateSmartFields()}
+function resetSmartFields(){['matchNote','daysWrap','durationWrap','formatWrap'].forEach(id=>byId(id).classList.remove('show'));selectedDays=[];byId('days').value='';byId('duration').value='';byId('lessonType').value=''}
+
+function getKnownDays(activity,place){
+  const special=SPECIAL_DAYS[activity+'|'+place]; if(special)return special;
+  const rule=ACTIVITY_RULES[activity]||{}; if(rule.fixedDays)return rule.fixedDays;
+  return PLACE_DAYS[place]||null;
+}
+
+function updateSmartFields(){
+  const activity=byId('activity').value,place=byId('place').value;if(!activity){resetSmartFields();return}
+  const rule=activityRule();
+  updateMatchNote(activity,place,rule);
+  updateDays(activity,place);
+  updateDuration(rule);
+  updateFormat(rule);
+  updateSummary();
+}
+
+function updateMatchNote(activity,place,rule){
+  const note=byId('matchNote');
+  if(!activity){note.classList.remove('show');return}
+  let title='Vi tilpasser skjemaet for dere';
+  let text=rule.note||'Når dere velger sted, viser vi bare relevante dager, varighet og undervisningsform.';
+  const days=place?getKnownDays(activity,place):null;
+  if(place&&days&&days.length===1){title='Praktisk: '+days[0];text='For dette valget har vi en kjent undervisningsdag. Dere trenger ikke velge den på nytt.'}
+  else if(place&&days&&days.length>1){title='Flere mulige dager';text='På dette stedet kjenner vi flere aktuelle undervisningsdager. Velg den eller de som passer.'}
+  note.classList.add('show');byId('matchTitle').textContent=title;byId('matchText').textContent=text;
+}
+
+function updateDays(activity,place){
+  const wrap=byId('daysWrap'),known=place?getKnownDays(activity,place):null;
+  selectedDays=[];clearError('daysError');
+  if(place&&known&&known.length===1){byId('days').value=known[0];wrap.classList.remove('show');return}
+  wrap.classList.add('show');
+  const days=known&&known.length>1?known.concat(['Annet']):['Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Annet'];
+  byId('dayGrid').innerHTML=days.map(d=>'<button type="button" class="day-chip" data-day="'+d+'" onclick="toggleDay(this)">'+d+'</button>').join('');
+  byId('days').value='';
+}
+function toggleDay(el){el.classList.toggle('selected');selectedDays=[...document.querySelectorAll('.day-chip.selected')].map(x=>x.dataset.day);byId('days').value=selectedDays.join(', ');clearError('daysError');updateSummary()}
+
+function updateDuration(rule){
+  const wrap=byId('durationWrap');
+  if(rule.fixedDuration){byId('duration').value=rule.fixedDuration;wrap.classList.remove('show');return}
+  wrap.classList.add('show');
+  byId('durationGrid').innerHTML='<button type="button" class="option-card selected" data-value="30 min" onclick="selectOption(this,\'durationGrid\',\'duration\')"><span><strong>30 minutter</strong><small>Et godt og vanlig utgangspunkt</small></span><span class="checkmark">✓</span></button><button type="button" class="option-card" data-value="45 min" onclick="selectOption(this,\'durationGrid\',\'duration\')"><span><strong>45 minutter</strong><small>Mer tid til fordypning og repertoar</small></span><span class="checkmark">✓</span></button>';
+  byId('duration').value='30 min';
+}
+
+function updateFormat(rule){
+  const wrap=byId('formatWrap');
+  if(rule.fixedFormat){byId('lessonType').value=rule.fixedFormat;wrap.classList.remove('show');return}
+  wrap.classList.add('show');
+  byId('formatGrid').innerHTML='<button type="button" class="option-card selected" data-value="Individuell" onclick="selectOption(this,\'formatGrid\',\'lessonType\')"><span><strong>Individuell</strong><small>Én elev med lærer</small></span><span class="checkmark">✓</span></button><button type="button" class="option-card" data-value="Gruppe / usikker" onclick="selectOption(this,\'formatGrid\',\'lessonType\')"><span><strong>Gruppe / usikker</strong><small>Vi hjelper dere å finne riktig løsning</small></span><span class="checkmark">✓</span></button>';
+  byId('lessonType').value='Individuell';
+}
+
+function selectOption(el,gridId,inputId){byId(gridId).querySelectorAll('.option-card').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');byId(inputId).value=el.dataset.value;updateSummary()}
+function selectExperience(el){document.querySelectorAll('[data-exp]').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');byId('experience').value=el.dataset.exp}
+
+function summaryText(){
+  const activity=byId('activity').value,place=byId('place').value,days=byId('days').value,duration=byId('duration').value,format=byId('lessonType').value;
+  const parts=[activity,place,days,duration,format].filter(Boolean);return parts.join(' · ')
+}
+function updateSummary(){const text=summaryText();['summary2','summary3'].forEach(id=>{const box=byId(id);box.classList.toggle('show',!!text);const line=box.querySelector('.summary-line');if(line)line.textContent=text})}
+
+function validateStep1(){
+  let ok=true;const activity=byId('activity').value,place=byId('place').value;
+  if(!activity){byId('activityError').classList.add('show');setInvalid('activity',true);ok=false}
+  if(activity==='Annet instrument / tilbud'&&!byId('otherInstrument').value.trim()){byId('otherInstrumentError').classList.add('show');setInvalid('otherInstrument',true);ok=false}else setInvalid('otherInstrument',false);
+  if(!place){byId('placeError').classList.add('show');setInvalid('place',true);ok=false}
+  if(byId('daysWrap').classList.contains('show')&&!byId('days').value){byId('daysError').classList.add('show');ok=false}
+  if(!ok){const first=document.querySelector('.field-error.show');if(first)first.scrollIntoView({behavior:'smooth',block:'center'})}
+  return ok;
+}
+function validateStep2(){
+  let ok=true;[['firstName','firstNameError'],['lastName','lastNameError']].forEach(pair=>{const input=byId(pair[0]);if(!input.value.trim()){byId(pair[1]).classList.add('show');setInvalid(pair[0],true);ok=false}else{byId(pair[1]).classList.remove('show');setInvalid(pair[0],false)}});return ok
+}
+
+function go(n){
+  if(n===2&&!validateStep1())return;
+  if(n===3&&!validateStep2())return;
+  updateSummary();document.querySelectorAll('.formpage').forEach(x=>x.classList.remove('active'));byId('p'+n).classList.add('active');for(let i=1;i<=3;i++)byId('bar'+i).classList.toggle('on',i<=n);document.querySelectorAll('.step-labels span').forEach((x,i)=>x.classList.toggle('active',i===n-1));document.querySelector('.formbox').scrollIntoView({behavior:'smooth',block:'start'})
+}
+function done(){document.querySelectorAll('.formpage').forEach(x=>x.classList.remove('active'));byId('done').classList.add('active');document.querySelectorAll('.step').forEach(x=>x.classList.add('on'))}
+
+function fillBirthYears(){
+  const select=byId('birthYear'),year=new Date().getFullYear();select.innerHTML='<option value="">Velg fødselsår</option>';
+  for(let y=year-7;y>=year-20;y--){const o=document.createElement('option');o.value=y;o.textContent=y+' (ca. '+(year-y)+' år)';select.appendChild(o)}
+}
+function applyParams(){
+  fillBirthYears();populatePlaces();
+  const q=new URLSearchParams(location.search),a=q.get('aktivitet'),s=q.get('sted');
+  if(a){const el=byId('activity'),aliases={'Annet instrument':'Annet instrument / tilbud'};const target=aliases[a]||a;const opt=[...el.options].find(o=>o.text.toLowerCase()===target.toLowerCase());if(opt)el.value=opt.value}
+  activityChanged();
+  if(s){const el=byId('place'),sl=s.toLowerCase();const exact=[...el.options].find(o=>o.value.toLowerCase()===sl||o.text.toLowerCase()===sl);const prefix=[...el.options].find(o=>o.value.toLowerCase().startsWith(sl)||o.text.toLowerCase().startsWith(sl));if(exact)el.value=exact.value;else if(prefix)el.value=prefix.value;placeChanged()}
+}
+document.addEventListener('DOMContentLoaded',applyParams);
+</script>
+<script src="/mobile-nav.js" defer></script>
+</body>
+</html>
