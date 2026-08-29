@@ -1,0 +1,1 @@
+Unique titles, descriptions, canonical URLs, robots directives and social metadata are part of the SEO layer.
