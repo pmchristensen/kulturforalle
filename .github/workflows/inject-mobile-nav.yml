@@ -1,0 +1,33 @@
+name: Inject mobile navigation
+on:
+  push:
+    paths:
+      - '.github/workflows/inject-mobile-nav.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add mobile navigation script to all pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          tag='<script src="/mobile-nav.js" defer></script>'
+          for name in ['index.html','priser.html','stipend.html','laereplan.html','pamelding.html']:
+              p=Path(name)
+              s=p.read_text()
+              if tag not in s:
+                  if '</body>' not in s:
+                      raise SystemExit(f'</body> missing in {name}')
+                  s=s.replace('</body>',tag+'</body>')
+                  p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "Kulturforalle Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html priser.html stipend.html laereplan.html pamelding.html
+          git commit -m "Enable mobile menu on all pages" || exit 0
+          git push
