@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/styles.css">
   <style>
     .signup-hero{padding-bottom:24px!important}.signup-intro{max-width:760px}.signup-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:13px;font-weight:800;color:#5f5368}
-    .smart-note{background:#f6f0fb;border:1px solid #e3d5ef;border-radius:20px;padding:16px 18px;margin:14px 0 4px;display:none}.smart-note.show{display:block}.smart-note strong{display:block;color:#4c246c;margin-bottom:4px}.smart-note p{margin:0;color:#655d69;font-size:13px;line-height:1.45}
+    .smart-note{background:#f8f6fa;border:1px solid #e6e0e9;border-radius:14px;padding:11px 14px;margin:10px 0 2px;display:none}.smart-note.show{display:flex;align-items:center;gap:9px}.smart-note strong{display:block;color:#4c246c;margin:0;font-size:14px}.smart-note p{display:none}
     .conditional-field{display:none;margin-top:-2px;padding:17px;border-radius:18px;background:#f5eeff;border:1px solid #ddcaef}.conditional-field.show{display:block}.conditional-field label{font-size:14px!important}.conditional-field .hint{font-size:12px;color:var(--mut);margin:6px 0 0}.conditional-field input{background:#fff!important}
     .smart-block{display:none}.smart-block.show{display:block}.smart-block-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin:20px 0 10px}.smart-block-head h3{font-size:18px;margin:0 0 3px}.smart-block-head p{font-size:12px;color:var(--mut);margin:0}.auto-pill{flex:none;background:#efe8f6;color:#58257d;border-radius:999px;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
     .option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option-card{appearance:none;border:1px solid #ded9e2;background:#fff;border-radius:16px;padding:14px 15px;text-align:left;cursor:pointer;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#29242e}.option-card:hover{border-color:#c3a7d9}.option-card.selected{border:2px solid #6c2bb8;background:#faf6ff;padding:13px 14px}.option-card strong{display:block;font-size:15px}.option-card small{display:block;color:#786f7c;font-size:11px;line-height:1.35;margin-top:3px}.checkmark{width:24px;height:24px;border-radius:50%;border:1px solid #d5ced9;display:grid;place-items:center;font-size:12px;flex:none}.option-card.selected .checkmark{background:#6c2bb8;color:#fff;border-color:#6c2bb8}
@@ -165,13 +165,12 @@ function updateSmartFields(){
 
 function updateMatchNote(activity,place,rule){
   const note=byId('matchNote');
-  if(!activity){note.classList.remove('show');return}
-  let title='Vi tilpasser skjemaet for dere';
-  let text=rule.note||'Når dere velger sted, viser vi bare relevante dager, varighet og undervisningsform.';
   const days=place?getKnownDays(activity,place):null;
-  if(place&&days&&days.length===1){title='Praktisk: '+days[0];text='For dette valget har vi en kjent undervisningsdag. Dere trenger ikke velge den på nytt.'}
-  else if(place&&days&&days.length>1){title='Flere mulige dager';text='På dette stedet kjenner vi flere aktuelle undervisningsdager. Velg den eller de som passer.'}
-  note.classList.add('show');byId('matchTitle').textContent=title;byId('matchText').textContent=text;
+  if(!(place&&days&&days.length===1)){note.classList.remove('show');return}
+  const day=days[0];
+  byId('matchTitle').textContent='✓ Undervisning '+day.toLowerCase();
+  byId('matchText').textContent='';
+  note.classList.add('show');
 }
 
 function updateDays(activity,place){
