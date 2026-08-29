@@ -1,0 +1,31 @@
+name: Polish value cards on mobile
+on:
+  push:
+    paths:
+      - '.github/workflows/polish-values-mobile.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add compact mobile value card styles
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('mobile-nav.js')
+          s=p.read_text()
+          needle="body.mobile-menu-open{overflow:hidden}`;document.head.appendChild(s)}"
+          replacement="""@media(max-width:600px){.values{padding:48px 0!important}.values .section-head{margin-bottom:22px!important}.value-grid{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}.value{min-height:0!important;padding:17px 18px!important;border-radius:18px!important;display:grid!important;grid-template-columns:42px 1fr!important;grid-template-rows:auto auto!important;column-gap:14px!important;align-items:center!important;background:rgba(255,255,255,.055)!important}.value-number{grid-row:1 / span 2!important;width:38px!important;height:38px!important;border-radius:50%!important;margin:0!important;display:grid!important;place-items:center!important;background:rgba(255,215,96,.12)!important;font-size:12px!important}.value h3{font-size:18px!important;line-height:1.15!important;margin:0 0 4px!important}.value p{font-size:14px!important;line-height:1.38!important;margin:0!important;color:#d9cde6!important}}body.mobile-menu-open{overflow:hidden}`;document.head.appendChild(s)}"""
+          if needle not in s:
+              raise SystemExit('target not found')
+          p.write_text(s.replace(needle,replacement))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mobile-nav.js
+          git diff --cached --quiet || git commit -m "Make mobile value cards compact"
+          git push
