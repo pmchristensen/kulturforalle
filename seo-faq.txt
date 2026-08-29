@@ -1,0 +1,1 @@
+Visible FAQ content and FAQPage schema are used on selected high-intent pages where questions are relevant to users.
