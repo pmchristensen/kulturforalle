@@ -1,0 +1,6 @@
+Organization: EducationalOrganization
+Site: WebSite
+Pages: WebPage + BreadcrumbList
+Offers: Service
+Selected Q&A: FAQPage
+Local pages: Service + areaServed
