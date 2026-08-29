@@ -1,0 +1,1 @@
+Open Graph and Twitter metadata are populated through the SEO layer for share previews.
