@@ -1,0 +1,3 @@
+Contact: mailto:kulturskole@kfuk-kfum.no
+Preferred-Languages: no, en
+Canonical: https://kulturforalle.no/security.txt
