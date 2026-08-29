@@ -1,0 +1,1 @@
+Core technical SEO implemented. Production verification in Search Console remains an external launch step.
