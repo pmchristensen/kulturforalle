@@ -26,6 +26,12 @@
       }
     `;
     document.head.appendChild(style);
+    const hero=document.querySelector('.hero-art .photo.main img');
+    if(hero){
+      hero.src='/images/hero-kulturskole-1200.webp';
+      hero.width=1200;
+      hero.height=800;
+    }
   }
   const core=document.createElement('script');
   core.src='/seo-core.js';
