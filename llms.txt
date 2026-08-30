@@ -1,23 +1,31 @@
 # KFUK-KFUM Kulturskole
 
-Official website: https://kulturforalle.no/
+KFUK-KFUM Kulturskole tilbyr musikk, visuell kunst og kreative aktiviteter for barn og unge, primært 8–19 år, i Oslo, Bærum, Asker, Bergen og Hamar.
 
-KFUK-KFUM Kulturskole offers music, visual art and creative activities for children and young people, primarily ages 8–19, in Oslo, Bærum, Asker, Bergen and Hamar.
+## Viktige sider
 
-Key pages:
-- https://kulturforalle.no/piano
-- https://kulturforalle.no/gitar
-- https://kulturforalle.no/trommer
-- https://kulturforalle.no/vokal
-- https://kulturforalle.no/bass
-- https://kulturforalle.no/musikkproduksjon
-- https://kulturforalle.no/visuell-kunst
-- https://kulturforalle.no/priser
-- https://kulturforalle.no/stipend
-- https://kulturforalle.no/oslo
-- https://kulturforalle.no/baerum
-- https://kulturforalle.no/asker
-- https://kulturforalle.no/bergen
-- https://kulturforalle.no/hamar
+- [Forsiden](https://kulturforalle.no/)
+- [Piano](https://kulturforalle.no/piano)
+- [Gitar](https://kulturforalle.no/gitar)
+- [Trommer](https://kulturforalle.no/trommer)
+- [Vokal](https://kulturforalle.no/vokal)
+- [Bass](https://kulturforalle.no/bass)
+- [Musikkproduksjon](https://kulturforalle.no/musikkproduksjon)
+- [Visuell kunst](https://kulturforalle.no/visuell-kunst)
+- [Andre tilbud](https://kulturforalle.no/andre-tilbud)
+- [Priser](https://kulturforalle.no/priser)
+- [Stipend](https://kulturforalle.no/stipend)
+- [Læreplan](https://kulturforalle.no/laereplan)
+- [Påmelding og interesse](https://kulturforalle.no/pamelding)
 
-New music students can try two lessons before deciding whether to continue. The school also has a scholarship scheme for families who need support with tuition fees.
+## Undervisningsområder
+
+- [Oslo](https://kulturforalle.no/oslo)
+- [Bærum](https://kulturforalle.no/baerum)
+- [Asker](https://kulturforalle.no/asker)
+- [Bergen](https://kulturforalle.no/bergen)
+- [Hamar](https://kulturforalle.no/hamar)
+
+## Praktisk
+
+Nye musikkelever kan prøve to undervisningstimer før de bestemmer seg for om de vil fortsette. Kulturskolen har også en stipendordning for familier som trenger støtte til semesteravgiften.

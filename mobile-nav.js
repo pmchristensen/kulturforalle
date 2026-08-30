@@ -79,3 +79,22 @@
   function init(){addStyles();mobileNav();visualCards();offerHero();footerLinks();finder();fixHomepageLogo()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+
+/* Lighthouse accessibility and agent-readiness cleanup. */
+(function(){
+  function improveSemantics(){
+    [['activity','Hva vil du lære?'],['place','Hvor?'],['age','Alder']].forEach(function(item){
+      const el=document.getElementById(item[0]); if(!el)return;
+      el.setAttribute('name',item[0]);
+      const field=el.closest('.field'); const label=field&&field.querySelector('label');
+      if(label){label.setAttribute('for',item[0]);} else {el.setAttribute('aria-label',item[1]);}
+    });
+    const home=location.pathname==='/'||location.pathname==='/index.html';
+    if(home){document.querySelectorAll('nav a[href="#stipend"],.mobile-menu-links a[href="#stipend"]').forEach(function(a){a.setAttribute('href','/stipend.html')});}
+    document.querySelectorAll('footer h4,.footer h4').forEach(function(h){const n=document.createElement('h3');n.innerHTML=h.innerHTML;for(const a of h.attributes)n.setAttribute(a.name,a.value);h.replaceWith(n)});
+    const style=document.createElement('style');
+    style.textContent='footer h3,.footer h3{color:#fff}footer .brand small,.footer .brand small{color:#d8b9ff}';
+    document.head.appendChild(style);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',improveSemantics);else improveSemantics();
+})();
