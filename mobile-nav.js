@@ -3,7 +3,7 @@
     'Piano':{href:'/piano.html',img:'https://images.pexels.com/photos/8520441/pexels-photo-8520441.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Piano · synth',meta:'8–19 år',copy:'Fra første toner til musikken du selv har lyst til å spille.'},
     'Gitar':{href:'/gitar.html',img:'https://images.pexels.com/photos/33950378/pexels-photo-33950378.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Akustisk · elektrisk',meta:'8–19 år',copy:'Lær grep, rytme, låter og finn ditt eget uttrykk på gitar.'},
     'Trommer':{href:'/trommer.html',img:'https://images.pexels.com/photos/8132955/pexels-photo-8132955.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Rytme · groove',meta:'8–19 år',copy:'Bygg rytmefølelse, koordinasjon og spilleglede bak trommene.'},
-    'Vokal':{href:'/vokal.html',img:'https://images.pexels.com/photos/7087171/pexels-photo-7087171.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Stemme · formidling',meta:'8–19 år',copy:'Utforsk stemmen, sangene du liker og trygghet i formidlingen.'},
+    'Vokal':{href:'/vokal.html',img:'/images/tilbud/vokal-teen-studio.webp',tag:'Stemme · formidling',meta:'8–19 år',copy:'Utforsk stemmen, sangene du liker og trygghet i formidlingen.'},
     'Bass':{href:'/bass.html',img:'https://images.pexels.com/photos/8512691/pexels-photo-8512691.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Bass · samspill',meta:'8–19 år',copy:'Lær groove, teknikk og hvordan bassen binder musikken sammen.'},
     'Musikkproduksjon':{href:'/musikkproduksjon.html',img:'https://images.pexels.com/photos/8714397/pexels-photo-8714397.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Studio · beats · lyd',meta:'Skap selv',copy:'Lag beats, ta opp lyd og utvikle egne ideer fra skisse til produksjon.'},
     'Visuell kunst':{href:'/visuell-kunst.html',img:'https://images.pexels.com/photos/1107574/pexels-photo-1107574.jpeg?auto=compress&cs=tinysrgb&w=1400',tag:'Tegning · maling · design',meta:'Skap fritt',copy:'Utforsk farger, materialer og teknikker og utvikle ditt eget uttrykk.'},
@@ -60,41 +60,10 @@
 
   function footerLinks(){const footer=document.querySelector('footer,.footer');if(!footer)return;let columns=footer.querySelectorAll('.footer-grid>div,.footerin>div');if(!columns.length)return;let col=null;columns.forEach(function(c){const h=c.querySelector('h4');if(h&&h.textContent.trim()==='Tilbud')col=c});if(!col){col=document.createElement('div');const parent=footer.querySelector('.footer-grid,.footerin');if(!parent)return;parent.appendChild(col)}col.innerHTML='<h4>Tilbud</h4>'+Object.keys(offerData).map(function(n){return '<a href="'+offerData[n].href+'">'+n+'</a>'}).join('')}
 
-  function finder(){if(!document.getElementById('activity')||!document.getElementById('place')||!document.getElementById('age')||!document.getElementById('result'))return;window.findOffer=function(){const a=document.getElementById('activity').value,p=document.getElementById('place').value,age=document.getElementById('age').value,r=document.getElementById('result');const q=new URLSearchParams({aktivitet:a,sted:p,alder:age}).toString();const learn=offerData[a]?offerData[a].href:'#tilbud';r.innerHTML='<div class="result-copy"><small>Dette passer valgene deres</small><strong>'+a+' · '+p+' · '+age+'</strong><div style="margin-top:6px;color:var(--muted);font-weight:650">Meld interesse, så hjelper kulturskolen dere med aktuelt undervisningssted, lærer og tidspunkt.</div></div><div class="result-actions"><a class="result-link" href="/pamelding.html?'+q+'">Meld interesse →</a><a class="result-secondary" href="'+learn+'">Les mer</a></div>';r.style.display='block'}}
+  function finderUpgrade(){if(location.pathname!=='/'&&location.pathname!=='/index.html')return;const activity=document.getElementById('activity'),place=document.getElementById('place'),age=document.getElementById('age'),result=document.getElementById('result');if(!activity||!place||!age||!result)return;window.findOffer=function(){const a=activity.value,p=place.value,y=age.value;if(!a||!p||!y){result.style.display='block';result.innerHTML='<div class="result-copy"><strong>Velg tilbud, sted og alder først.</strong><small>Da kan vi sende deg videre til riktig påmelding.</small></div>';return}const d=offerData[a]||{href:'/andre-tilbud.html'};const params=new URLSearchParams({aktivitet:a,sted:p,alder:y});result.style.display='block';result.innerHTML='<div class="result-copy"><small>Dette passer valgene deres</small><strong>'+a+' · '+p+' · '+y+' år</strong><small>Vi bruker valgene videre, så du slipper å fylle dem inn på nytt.</small></div><div class="result-actions"><a class="result-link" href="/pamelding.html?'+params.toString()+'">Meld interesse →</a><a class="result-secondary" href="'+d.href+'">Les mer</a></div>'}}
 
-  function fixHomepageLogo(){
-    const brand=document.querySelector('nav .brand');
-    if(!brand)return;
-    const isHome=location.pathname==='/'||location.pathname==='/index.html';
-    if(isHome){
-      brand.setAttribute('href','/');
-      brand.addEventListener('click',function(e){
-        e.preventDefault();
-        history.replaceState(null,'',location.pathname);
-        window.scrollTo({top:0,behavior:'smooth'});
-      });
-    }
-  }
+  function pageCleanup(){document.querySelectorAll('select').forEach(function(s,i){if(!s.name)s.name=s.id||('valg-'+(i+1));if(!s.getAttribute('aria-label')&&!s.id)s.setAttribute('aria-label','Velg alternativ')});document.querySelectorAll('footer h4').forEach(function(h){const n=document.createElement('h3');n.innerHTML=h.innerHTML;n.className=h.className;h.replaceWith(n)});const s=document.createElement('style');s.textContent='footer h3,.footer h3{color:#fff;font-size:1em;margin:1.33em 0}.footer-grid a,.footer a{color:#e8dff0}';document.head.appendChild(s)}
 
-  function init(){addStyles();mobileNav();visualCards();offerHero();footerLinks();finder();fixHomepageLogo()}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();
-
-/* Lighthouse accessibility and agent-readiness cleanup. */
-(function(){
-  function improveSemantics(){
-    [['activity','Hva vil du lære?'],['place','Hvor?'],['age','Alder']].forEach(function(item){
-      const el=document.getElementById(item[0]); if(!el)return;
-      el.setAttribute('name',item[0]);
-      const field=el.closest('.field'); const label=field&&field.querySelector('label');
-      if(label){label.setAttribute('for',item[0]);} else {el.setAttribute('aria-label',item[1]);}
-    });
-    const home=location.pathname==='/'||location.pathname==='/index.html';
-    if(home){document.querySelectorAll('nav a[href="#stipend"],.mobile-menu-links a[href="#stipend"]').forEach(function(a){a.setAttribute('href','/stipend.html')});}
-    document.querySelectorAll('footer h4,.footer h4').forEach(function(h){const n=document.createElement('h3');n.innerHTML=h.innerHTML;for(const a of h.attributes)n.setAttribute(a.name,a.value);h.replaceWith(n)});
-    const style=document.createElement('style');
-    style.textContent='footer h3,.footer h3{color:#fff}footer .brand small,.footer .brand small{color:#d8b9ff}';
-    document.head.appendChild(style);
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',improveSemantics);else improveSemantics();
+  addStyles();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){mobileNav();visualCards();offerHero();footerLinks();finderUpgrade();pageCleanup()});else{mobileNav();visualCards();offerHero();footerLinks();finderUpgrade();pageCleanup()}
 })();
